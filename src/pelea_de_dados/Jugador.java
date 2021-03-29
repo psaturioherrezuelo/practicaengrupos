@@ -67,5 +67,5 @@ public void setPPerdida(int pPerdidas){
 //Metodo ToString
 public String toString(){
     return "Jugador: \t" + getNombre() + "\t id: " + getIdJugador() + "\t ganados: "+ getPGanadas() + "\t perdidos: " + getPPerdidas() + "\n";
+    }
 }
-        }
