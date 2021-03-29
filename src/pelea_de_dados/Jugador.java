@@ -45,8 +45,8 @@ public int getNivel(){
     return nivel;
     }
 
-public void setNivel(){
-    this.nivel;
+public void setNivel(int nivel){
+    this.nivel=nivel;
     }
 
 public int getPGanadas(){
@@ -66,6 +66,6 @@ public void setPPerdida(int pPerdidas){
 }
 //Metodo ToString
 public String toString(){
-    return "Jugador: \t" + getNombre() + "\t id: " + getIdJugador() + "\t ganados: "+ getPGanadas() + "\t perdidos: " + getPPerdidas() + "\n";
+    return "Jugador: \t Nombre" + getNombre() + "\t id: " + getIdJugador() + "\t ganados: "+ getPGanadas() + "\t perdidos: " + getPPerdidas() + "\n";
     }
 }
