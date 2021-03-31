@@ -1,5 +1,7 @@
 package pelea_de_dados;
 
+import java.util.Scanner;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -12,25 +14,46 @@ public class Main {
 		String nombre;
 		int id, cantplayers = 2, total;
 		Jugador player[] = new Jugador[cantplayers];
+		Scanner ent = new Scanner(System.in);
+		boolean fin= false;
 		
 		for(int i=0; i<cantplayers; i++) {
 			
 			id = i+1;
 			System.out.println("Introduce el nombre del jugador " + id);
+			nombre = ent.next();
 			
-			if(i==0) { //condicion para tener nombres temporalmente, solo para pruebas
-				nombre = "carlos";
-			} else {
-				nombre = "angel";
-			}
+		
+			
 			
 			player[i] = new Jugador(id,nombre);
 			
 			System.out.println(player[i]);
-			total=player[i].tirarDado();//dar un valor a la suma total de los dados de cada jugador
-			System.out.println(total);
+			
 		
 		}
+		do {
+			for(int i=0; i<player.length; i++) {
+				player[i].tirarDado();
+			}
+			if(player[0].getTotal()>player[1].getTotal()) {
+				player[1].setVidas(player[0].getTotal()-player[1].getTotal());
+			}else if(player[0].getTotal()<player[1].getTotal()) {
+				player[0].setVidas(player[1].getTotal()-player[0].getTotal());
+				
+			}else {
+				System.out.println("Habéis empatado");
+			}
+			
+			for(int j=0; j<player.length; j++) {
+				System.out.println("Jugador " + j + " " + player[j].getVidas());
+				if(player[j].getVidas() <= 0) {
+					fin=true;
+					System.out.println("Jugador " + j + "pierde");
+				}
+			}
+			
+		}while(fin==true);
 		
 	}
 
