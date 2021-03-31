@@ -2,6 +2,8 @@ package pelea_de_dados;
 
 public class Jugador {
 
+	private Dados dado[] = new Dados[3];
+	private int vidas;
     private String nombre;
     private int idJugador;
     private int nivel;
@@ -9,6 +11,7 @@ public class Jugador {
     private int pPerdidas;
 
 public Jugador() {
+	
     this.nombre="";
     this.idJugador=0;
     this.nivel=0;
@@ -24,7 +27,24 @@ public Jugador(String nombre, int idJugador, int nivel,int pPerdidas, int pGanad
     this.pPerdidas=pPerdidas;
     }
 
+	public Jugador(int id, String nombre) {
+		
+		idJugador = id;
+		this.nombre = nombre;
+		vidas = 15;
+		
+	}
+
 //metodos getter and setter
+	
+	public int getVidas() {
+		return vidas;
+	}
+
+	public void setVidas(int vidas) {
+		this.vidas = vidas;
+	}
+	
 public String getNombre(){
     return nombre;
 }
@@ -64,6 +84,25 @@ public int getPPerdidas(){
 public void setPPerdida(int pPerdidas){
     this.pPerdidas=pPerdidas;
 }
+
+public int tirarDado() {
+	
+	String caras ="";
+	int total = 0;
+	
+	for(int i=0; i<3; i++) {
+		
+		dado[i] = new Dados();
+		caras += dado[i] + "\n";
+		total += dado[i].getNum();
+	}
+	
+	System.out.println(idJugador + ", " + nombre + ":\n" + caras);
+	
+	return total;
+	
+}
+
 //Metodo ToString
 public String toString(){
     return "Jugador: \t Nombre" + getNombre() + "\t id: " + getIdJugador() + "\t ganados: "+ getPGanadas() + "\t perdidos: " + getPPerdidas() + "\n";
