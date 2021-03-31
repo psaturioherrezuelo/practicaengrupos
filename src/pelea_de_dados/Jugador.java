@@ -98,10 +98,10 @@ public class Jugador {
 	    this.pPerdidas=pPerdidas;
 	}
 	
-	public void tirarDado() {
+	public int tirarDado() {
 		
 		String caras ="";
-		total = 0;
+		int total = 0;
 		
 		for(int i=0; i<3; i++) {
 			
@@ -112,6 +112,7 @@ public class Jugador {
 		
 		System.out.println(idJugador + ", " + nombre + ":\n" + caras);
 		
+		return total;
 		
 	}
 	
