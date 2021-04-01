@@ -18,7 +18,7 @@ public class Main {
 		
 	}
 	
-	private static void crearjugs(Jugador pers[]) {
+	private static void crearjugs(Jugador pers[]) { //Metodo para crear los jugadores
 		
 		
 		Scanner sc = new Scanner(System.in);
@@ -40,21 +40,21 @@ public class Main {
 		
 	}
 
-	private static void partida(Jugador[] pers) {
+	private static void partida(Jugador[] pers) { //Ejecucion de la partida
 		
-		boolean win = false;
-		int dif, turnos = 0, vidas, tot;
+		boolean win = false; //Fin del juego
+		int dif, turnos = 0, vidas, tot, suma[] = new int[pers.length]; //Variables necesarias para los calculos
 		
-		
-		do {
+		do { //Bucle principal que estara activo hasta que pierda un jugador
 			
 			turnos ++;
 			System.out.println("\n\nTurno " + turnos + "\n\n");
-			int suma[] = new int[2];
+			suma = new int[pers.length]; //Array que acumulara la suma de ambos jugadores
 			dif = 0;
 			vidas = 0;
 			tot = 0;
 			
+			/* Fase de tirada de dados acumulando el total en una variable */
 			for(int i=0; i<pers.length; i++) {
 				
 				suma[i] = pers[i].tirarDado();
@@ -65,6 +65,7 @@ public class Main {
 			System.out.println("El jugador " + pers[0].getIdJugador() + " " + pers[0].getNombre() + ": ha sacado " + suma[0]);
 			System.out.println("El jugador " + pers[1].getIdJugador() + " " + pers[1].getNombre() + ": ha sacado " + suma[1]);
 			
+			/* Condicion que comprobara que jugador ha sacado mayor puntuacion */
 			if(suma[0]>suma[1]) {
 				
 				dif=suma[0]-suma[1];
@@ -91,6 +92,7 @@ public class Main {
 			
 			timer();
 			
+			/* Condicion que comprobara si un jugador ha perdido */
 			if(pers[0].getVidas() <= 0 || pers[1].getVidas() <= 0) {
 				
 				win = true;
@@ -107,18 +109,18 @@ public class Main {
 			
 			}
 			
-		} while(win==false);
+		} while(win==false); //Fin del bucle principal
 		
 		System.out.println("La partida ha durado " + turnos + " turnos.\n"
 				+ "\n¡Nos vemos en el proximo duelo a muerte!");
 		
 	}
 
-	private static void timer() {
+	private static void timer() { //Temporizador para que no salga todo el codigo de golpe
 		
 		try {
 			
-			Thread.sleep(2000);
+			Thread.sleep(2000);//2 segundos
 			
 		} catch (InterruptedException e) {
 			
